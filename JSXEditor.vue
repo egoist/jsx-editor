@@ -50,7 +50,7 @@
     mounted() {
       window.onresize = debounce(() => {
         this.height = window.innerHeight * 0.7
-      }, 300)
+      }, 0)
       this.editor = CodeMirror.fromTextArea(this.$refs.input, {
         mode: 'jsx',
         tabSize: 2,
@@ -75,7 +75,7 @@
       handleChange: debounce(function (e) {
         const code = e.getValue()
         this.transform(code)
-      }, 300),
+      }, 0),
       async transform(code) {
         try {
           const result = await fetch.post(api, {code}).then(res => res.data)
