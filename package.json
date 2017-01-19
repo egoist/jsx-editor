@@ -20,7 +20,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "codemirror": "^5.22.2",
-    "lodash.throttle": "^4.1.1",
+    "lodash.debounce": "^4.0.8",
     "prismjs": "^1.6.0",
     "vue-windows": "^0.1.3"
   }

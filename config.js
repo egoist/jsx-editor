@@ -17,7 +17,7 @@ module.exports = {
       config.entry.vendor = [
         'vue',
         'axios',
-        'lodash.throttle',
+        'lodash.debounce',
         'prismjs',
         'vue-windows',
         'codemirror',

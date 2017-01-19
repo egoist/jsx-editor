@@ -20,7 +20,7 @@
 
 <script>
   import {EditorWindow} from 'vue-windows'
-  import throttle from 'lodash.throttle'
+  import debounce from 'lodash.debounce'
   import fetch from 'axios'
   import Prism from 'prismjs'
   import CodeMirror from 'codemirror'
@@ -48,7 +48,7 @@
       }
     },
     mounted() {
-      window.onresize = throttle(() => {
+      window.onresize = debounce(() => {
         this.height = window.innerHeight * 0.7
       }, 300)
       this.editor = CodeMirror.fromTextArea(this.$refs.input, {
@@ -72,7 +72,7 @@
       })
     },
     methods: {
-      handleChange: throttle(function (e) {
+      handleChange: debounce(function (e) {
         const code = e.getValue()
         this.transform(code)
       }, 300),
