@@ -1,0 +1,27 @@
+{
+  "name": "vue-jsx",
+  "description": "Vue JSX Live Editor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vue build --config config.js",
+    "build": "vue build --config config.js --prod",
+    "deploy": "npm run build && surge -d vue-jsx.surge.sh -p dist"
+  },
+  "author": {
+    "name": "EGOIST",
+    "email": "0x142857@gmail.com"
+  },
+  "devDependencies": {
+    "postcss-nested": "^1.0.0",
+    "vue-cli": "^2.8.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "codemirror": "^5.22.2",
+    "lodash.throttle": "^4.1.1",
+    "prismjs": "^1.6.0",
+    "vue-windows": "^0.1.3"
+  }
+}
