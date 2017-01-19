@@ -100,7 +100,6 @@
 <style src="prismjs/themes/prism.css"></style>
 <style src="codemirror/lib/codemirror.css"></style>
 <style>
-  @import url('https://fonts.css.network/css?family=Droid+Sans');
   html, body, #app {
     height: 100%;
   }
