@@ -8,7 +8,7 @@
       <editor-window title="Input" :height="height">
         <textarea ref="input" class="input"></textarea>
       </editor-window>
-      <editor-window title="Output" :height="height">
+      <editor-window :title="outputTitle" :height="height">
         <div class="result">
           <pre class="code"><code v-html="result"></code></pre>
           <div class="error" v-show="error">{{ error }}</div>
@@ -44,7 +44,8 @@
       return {
         result: '',
         error: '',
-        height: window.innerHeight * 0.7
+        height: window.innerHeight * 0.7,
+        outputTitle: 'Output'
       }
     },
     mounted() {
@@ -78,7 +79,9 @@
       }, 0),
       async transform(code) {
         try {
+          this.outputTitle = 'Loading...'
           const result = await fetch.post(api, {code}).then(res => res.data)
+          this.outputTitle = 'Output'
           if (result.error) {
             this.error = result.message
           } else {
@@ -86,6 +89,7 @@
             this.result = Prism.highlight(result.code, Prism.languages.javascript)
           }
         } catch (err) {
+          this.outputTitle = 'Output'
           this.error = err.response ? err.response.data : err.message
         }
       }
@@ -156,7 +160,7 @@
   }
   .error {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     left: 0;
     right: 0;
     background-color: red;
