@@ -24,6 +24,7 @@
   import fetch from 'axios'
   import Prism from 'prismjs'
   import CodeMirror from 'codemirror'
+  import qs from 'querystring'
 
   import 'codemirror/mode/javascript/javascript'
   import 'codemirror/mode/jsx/jsx'
@@ -32,20 +33,22 @@
     'https://vue-jsx-api.now.sh/transform' :
     'http://localhost:3000/transform'
 
-  const defaultValue = `
+  export default {
+    name: 'JSXEditor',
+    data() {
+      const defaultValue = `
 <div class="lolicon">
   <h1>Hello World!</h1>
 </div>
 `.trim()
+      const {input} = qs.parse(location.hash.substring(2))
 
-  export default {
-    name: 'JSXEditor',
-    data() {
       return {
         result: '',
         error: '',
         height: window.innerHeight * 0.7,
-        outputTitle: 'Output'
+        outputTitle: 'Output',
+        defaultValue: input || defaultValue
       }
     },
     mounted() {
@@ -63,9 +66,9 @@
         }
       })
 
-      this.editor.setValue(defaultValue)
+      this.editor.setValue(this.defaultValue)
 
-      this.transform(defaultValue)
+      this.transform(this.defaultValue)
       this.editor.on('change', this.handleChange)
       setTimeout(() => {
         this.editor.refresh()
@@ -87,11 +90,17 @@
           } else {
             this.error = ''
             this.result = Prism.highlight(result.code, Prism.languages.javascript)
+            this.updateURL(code)
           }
         } catch (err) {
           this.outputTitle = 'Output'
           this.error = err.response ? err.response.data : err.message
         }
+      },
+      updateURL(str) {
+        const query = qs.parse(location.hash.substring(2))
+        query.input = str
+        location.hash = `#?${qs.stringify(query)}`
       }
     },
     components: {
