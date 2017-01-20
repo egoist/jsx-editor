@@ -104,7 +104,7 @@
 <style src="prismjs/themes/prism.css"></style>
 <style src="codemirror/lib/codemirror.css"></style>
 <style>
-  html, body, #app {
+  html, body, #app, .CodeMirror {
     height: 100%;
   }
   body {
