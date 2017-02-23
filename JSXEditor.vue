@@ -2,7 +2,7 @@
   <div id="app">
     <header class="header">
       <h1>Vue JSX Live Editor</h1>
-      <h2>Built using vue-cli with almost zero-config, <a target="_blank" href="https://github.com/egoist/vue-jsx">check out source code</a></h2>
+      <h2>Built using vbuild with almost zero-config, <a target="_blank" href="https://github.com/egoist/vue-jsx">check out source code</a></h2>
     </header>
     <div class="editors">
       <editor-window title="Input" :height="height">
