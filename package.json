@@ -5,8 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "vue build --config config.js",
-    "build": "vue build --config config.js --prod",
+    "dev": "vbuild -dc",
+    "build": "vbuild -c",
     "deploy": "npm run build && surge -d vue-jsx.surge.sh -p dist"
   },
   "author": {
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "postcss-nested": "^1.0.0",
-    "vue-cli": "^2.8.0"
+    "vbuild": "^6.16.4"
   },
   "dependencies": {
     "axios": "^0.15.3",
