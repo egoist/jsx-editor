@@ -5,7 +5,7 @@ module.exports = {
   html: {
     title: pkg.description
   },
-  transpileModules: ['babel-plugin-transform-vue-jsx'],
+  transpileModules: ['babel-preset-vue'],
   postcss: {
     plugins: [
       require('postcss-nested')()

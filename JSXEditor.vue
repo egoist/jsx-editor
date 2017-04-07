@@ -10,7 +10,7 @@
       </editor-window>
       <editor-window :title="outputTitle" :height="height">
         <div class="result">
-          <pre class="code"><code v-html="result"></code></pre>
+          <pre class="code cm-s-default"><code v-html="result"></code></pre>
           <div class="error" v-show="error">{{ error }}</div>
         </div>
       </editor-window>
@@ -21,8 +21,7 @@
 <script>
   import {EditorWindow} from 'vue-windows'
   import debounce from 'lodash.debounce'
-  import fetch from 'axios'
-  import Prism from 'prismjs'
+  import highlight from 'cm-highlight'
   import CodeMirror from 'codemirror'
   import qs from 'querystring'
 
@@ -87,11 +86,13 @@
             presets: [transformVueJSX]
           })
           this.outputTitle = 'Output'
-          this.result = Prism.highlight(result.code, Prism.languages.javascript)
+          this.result = highlight(result.code, {
+            mode: 'jsx'
+          })
           this.updateURL(code)
         } catch (err) {
           this.outputTitle = 'Output'
-          this.error = err.message
+          this.error = err.stack
         }
       },
       updateURL(str) {
@@ -107,7 +108,6 @@
 </script>
 
 <style src="vue-windows/dist/vue-windows.css"></style>
-<style src="prismjs/themes/prism.css"></style>
 <style src="codemirror/lib/codemirror.css"></style>
 <style>
   html, body, #app, .CodeMirror {
