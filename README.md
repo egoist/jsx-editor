@@ -1,6 +1,6 @@
-# Vue JSX Live Editor
+# JSX Live Editor
 
-https://vue-jsx.surge.sh
+https://jsx.surge.sh
 
 ## Development
 

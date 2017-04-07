@@ -1,26 +1,32 @@
 <template>
   <div id="app">
     <header class="header">
-      <h1>Vue JSX Live Editor</h1>
-      <h2>Built using vbuild with almost zero-config, <a target="_blank" href="https://github.com/egoist/vue-jsx">check out source code</a></h2>
+      <div class="container">
+        <div class="header-left">
+          <h1>JSX Live Editor</h1>
+          <h2>Built using vbuild with almost zero-config, <a target="_blank" href="https://github.com/egoist/vue-jsx">check out source code</a></h2>
+        </div>
+        <div class="header-right">
+          <select v-model="mode">
+            <option value="vue">Vue</option>
+            <option value="react">React</option>
+          </select>
+        </div>
+      </div>
     </header>
     <div class="editors">
-      <editor-window title="Input" :height="height">
-        <textarea ref="input" class="input"></textarea>
-      </editor-window>
-      <editor-window :title="outputTitle" :height="height">
+      <div class="container">
+        <textarea ref="input" class="input">{{ code }}</textarea>
         <div class="result">
           <pre class="code cm-s-default"><code v-html="result"></code></pre>
           <div class="error" v-show="error">{{ error }}</div>
         </div>
-      </editor-window>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import {EditorWindow} from 'vue-windows'
-  import debounce from 'lodash.debounce'
   import highlight from 'cm-highlight'
   import CodeMirror from 'codemirror'
   import qs from 'querystring'
@@ -39,17 +45,13 @@
       const {input} = qs.parse(location.hash.substring(2))
 
       return {
-        result: '',
+        result: 'Loading...',
         error: '',
-        height: window.innerHeight * 0.7,
-        outputTitle: 'Output',
-        defaultValue: input || defaultValue
+        mode: 'vue',
+        code: input || defaultValue
       }
     },
     mounted() {
-      window.onresize = debounce(() => {
-        this.height = window.innerHeight * 0.7
-      }, 0)
       this.editor = CodeMirror.fromTextArea(this.$refs.input, {
         mode: 'jsx',
         tabSize: 2,
@@ -60,39 +62,47 @@
           }
         }
       })
-
-      this.editor.setValue(this.defaultValue)
-
-      this.transform(this.defaultValue)
-      this.editor.on('change', this.handleChange)
-      setTimeout(() => {
-        this.editor.refresh()
-        this.editor.focus()
+      this.transform()
+      this.editor.on('change', e => {
+        this.code = e.getValue()
       })
     },
+    watch: {
+      code() {
+        this.transform()
+      },
+      mode() {
+        this.transform()
+      }
+    },
     methods: {
-      handleChange: debounce(function (e) {
-        const code = e.getValue()
-        this.transform(code)
-      }, 0),
-      async transform(code) {
+      async transform() {
+        const code = this.code
         try {
-          this.outputTitle = 'Loading...'
           const [babel, transformVueJSX] = await Promise.all([
             import('babel-standalone'),
-            import('babel-preset-vue')
+            import('babel-preset-vue/dist/babel-preset-vue')
           ])
-          const result = babel.transform(code, {
-            presets: [transformVueJSX]
-          })
-          this.outputTitle = 'Output'
+
+          const transformOptions = {
+            presets: [],
+            plugins: []
+          }
+          if (this.mode === 'vue') {
+            transformOptions.presets.push(transformVueJSX)
+          } else if (this.mode === 'react') {
+            transformOptions.plugins.push('transform-react-jsx')
+          }
+          const result = babel.transform(code, transformOptions)
+
           this.result = highlight(result.code, {
             mode: 'jsx'
           })
+
           this.updateURL(code)
+          this.error = null
         } catch (err) {
-          this.outputTitle = 'Output'
-          this.error = err.stack
+          this.error = err.message
         }
       },
       updateURL(str) {
@@ -100,14 +110,10 @@
         query.input = str
         location.hash = `#?${qs.stringify(query)}`
       }
-    },
-    components: {
-      EditorWindow
     }
   }
 </script>
 
-<style src="vue-windows/dist/vue-windows.css"></style>
 <style src="codemirror/lib/codemirror.css"></style>
 <style>
   html, body, #app, .CodeMirror {
@@ -120,16 +126,20 @@
   * {
     box-sizing: border-box;
   }
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    height: 100%;
+  }
   .header {
-    height: 12%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    height: 80px;
     background-color: #4fc08d;
     color: white;
-    box-shadow: 0 1px 3px #ccc;
+    >.container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     h1 {
       margin: 0;
       font-weight: 400;
@@ -142,13 +152,24 @@
         color: white;
       }
     }
+    .header-right {
+      display: flex;
+      align-items: center;
+    }
   }
   .editors {
-    height: 88%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f6f6f6;
+    background-color: #f9f9f9;
+    height: calc(100% - 80px);
+    >.container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .CodeMirror, .result {
+      width: 50%;
+      padding: 10px;
+      border-left: 1px solid #e2e2e2;
+    }
   }
   .input {
     border: none;
@@ -159,6 +180,8 @@
   .result {
     position: relative;
     height: 100%;
+    border-right: 1px solid #e2e2e2;
+    background-color: white;
   }
   .code {
     margin: 0;
@@ -171,11 +194,10 @@
     right: 0;
     background-color: red;
     color: white;
-    border-radius: 4px;
     padding: 0;
     overflow: auto;
     padding: 10px;
-    font-size: 12px;
+    font-size: 16px;
     white-space: pre;
   }
 </style>

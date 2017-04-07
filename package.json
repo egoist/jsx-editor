@@ -1,13 +1,13 @@
 {
-  "name": "vue-jsx",
-  "description": "Vue JSX Live Editor",
+  "name": "jsx-editor",
+  "productName": "JSX Live Editor",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "vbuild -dc",
     "build": "vbuild -c",
-    "deploy": "npm run build && surge -d vue-jsx.surge.sh -p dist"
+    "deploy": "npm run build && surge -d jsx.surge.sh -p dist"
   },
   "author": {
     "name": "EGOIST",
@@ -18,11 +18,10 @@
     "vbuild": "^6.24.14"
   },
   "dependencies": {
-    "babel-preset-vue": "^0.1.0",
+    "babel-preset-vue": "^0.2.0",
     "babel-standalone": "^6.24.0",
     "cm-highlight": "^0.1.0",
     "codemirror": "^5.25.0",
-    "lodash.debounce": "^4.0.8",
-    "vue-windows": "^0.1.3"
+    "offline-plugin": "^4.6.2"
   }
 }

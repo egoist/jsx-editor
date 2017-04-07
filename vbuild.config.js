@@ -1,14 +1,26 @@
+const OfflinePlugin = require('offline-plugin')
 const pkg = require('./package')
 
 module.exports = {
   port: 5000,
-  html: {
-    title: pkg.description
-  },
-  transpileModules: ['babel-preset-vue'],
   postcss: {
     plugins: [
       require('postcss-nested')()
     ]
+  },
+  production: {
+    sourceMap: false,
+    webpack: {
+      plugins: [
+        new OfflinePlugin({
+          ServiceWorker: {
+            events: true
+          },
+          AppCache: {
+            events: true
+          }
+        })
+      ]
+    }
   }
 }
