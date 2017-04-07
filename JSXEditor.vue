@@ -42,12 +42,12 @@
   <h1>Hello World!</h1>
 </div>
 `.trim()
-      const {input} = qs.parse(location.hash.substring(2))
+      const {input, mode} = qs.parse(location.hash.substring(2))
 
       return {
         result: 'Loading...',
         error: '',
-        mode: 'vue',
+        mode: mode || 'vue',
         code: input || defaultValue
       }
     },
@@ -99,15 +99,20 @@
             mode: 'jsx'
           })
 
-          this.updateURL(code)
+          this.updateURL({ input: code, mode: this.mode })
           this.error = null
         } catch (err) {
           this.error = err.message
         }
       },
-      updateURL(str) {
+      updateURL({ input, mode }) {
         const query = qs.parse(location.hash.substring(2))
-        query.input = str
+        if (input !== undefined) {
+          query.input = input
+        }
+        if (mode !== undefined) {
+          query.mode = mode
+        }
         location.hash = `#?${qs.stringify(query)}`
       }
     }
