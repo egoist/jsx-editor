@@ -29,10 +29,6 @@
   import 'codemirror/mode/javascript/javascript'
   import 'codemirror/mode/jsx/jsx'
 
-  const api = process.env.NODE_ENV === 'production' ?
-    'https://vue-jsx-api.now.sh/transform' :
-    'http://localhost:3000/transform'
-
   export default {
     name: 'JSXEditor',
     data() {
@@ -83,18 +79,19 @@
       async transform(code) {
         try {
           this.outputTitle = 'Loading...'
-          const result = await fetch.post(api, {code}).then(res => res.data)
+          const [babel, transformVueJSX] = await Promise.all([
+            import('babel-standalone'),
+            import('babel-preset-vue')
+          ])
+          const result = babel.transform(code, {
+            presets: [transformVueJSX]
+          })
           this.outputTitle = 'Output'
-          if (result.error) {
-            this.error = result.message
-          } else {
-            this.error = ''
-            this.result = Prism.highlight(result.code, Prism.languages.javascript)
-            this.updateURL(code)
-          }
+          this.result = Prism.highlight(result.code, Prism.languages.javascript)
+          this.updateURL(code)
         } catch (err) {
           this.outputTitle = 'Output'
-          this.error = err.response ? err.response.data : err.message
+          this.error = err.message
         }
       },
       updateURL(str) {
@@ -179,5 +176,6 @@
     overflow: auto;
     padding: 10px;
     font-size: 12px;
+    white-space: pre;
   }
 </style>
