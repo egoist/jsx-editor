@@ -13,9 +13,14 @@
     "name": "EGOIST",
     "email": "0x142857@gmail.com"
   },
+  "postcss": {
+    "plugins": {
+      "postcss-nested": {}
+    }
+  },
   "devDependencies": {
     "postcss-nested": "^1.0.1",
-    "vbuild": "^7.0.4"
+    "vbuild": "^7.0.6"
   },
   "dependencies": {
     "babel-preset-vue": "^0.2.0",
