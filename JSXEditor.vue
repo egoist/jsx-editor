@@ -4,7 +4,7 @@
       <div class="container">
         <div class="header-left">
           <h1>JSX Live Editor</h1>
-          <h2>Built using vbuild with almost zero-config, <a target="_blank" href="https://github.com/egoist/vue-jsx">check out source code</a></h2>
+          <h2>Built using <a href="https://github.com/egoist/poi">Poi</a> with almost zero-config, <a target="_blank" href="https://github.com/egoist/vue-jsx">check out source code</a></h2>
         </div>
         <div class="header-right">
           <select v-model="mode">
