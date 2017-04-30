@@ -5,8 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "vbuild dev",
-    "build": "vbuild",
+    "dev": "poi",
+    "build": "poi build",
     "deploy": "npm run build && surge -d jsx.surge.sh -p dist"
   },
   "author": {
@@ -19,8 +19,8 @@
     }
   },
   "devDependencies": {
-    "postcss-nested": "^1.0.1",
-    "vbuild": "^7.0.6"
+    "poi": "^8.0.0-rc.1",
+    "postcss-nested": "^1.0.1"
   },
   "dependencies": {
     "babel-preset-vue": "^0.2.0",
