@@ -19,14 +19,14 @@
     }
   },
   "devDependencies": {
-    "poi": "^8.0.0-rc.1",
+    "poi": "^8.0.0-rc.4",
     "postcss-nested": "^1.0.1"
   },
   "dependencies": {
     "babel-preset-vue": "^0.2.0",
     "babel-standalone": "^6.24.0",
     "cm-highlight": "^0.1.0",
-    "codemirror": "^5.25.0",
+    "codemirror": "^5.25.2",
     "offline-plugin": "^4.7.0"
   }
 }
