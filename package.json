@@ -19,7 +19,7 @@
     }
   },
   "devDependencies": {
-    "poi": "^8.0.0-rc.4",
+    "poi": "^8.0.0-rc.6",
     "postcss-nested": "^1.0.1"
   },
   "dependencies": {
