@@ -3069,9 +3069,9 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-poi@^8.0.0-rc.12:
-  version "8.0.0-rc.12"
-  resolved "https://registry.npmjs.org/poi/-/poi-8.0.0-rc.12.tgz#0dcdf321c70f6dd5d8088ad2727509bea6d552df"
+poi@^8.0.0-rc.13:
+  version "8.0.0-rc.13"
+  resolved "https://registry.npmjs.org/poi/-/poi-8.0.0-rc.13.tgz#018c5e0cbcbc9bcd0fd23e0145db0bdffec33418"
   dependencies:
     address "^1.0.1"
     autoprefixer "^7.0.1"
