@@ -27,6 +27,10 @@ acorn@^5.0.0:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
+address@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/address/-/address-1.0.1.tgz#363f5d3f2be26d0655d8afd5a9562e4fc2194537"
+
 ajv-keywords@^1.1.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
@@ -105,6 +109,10 @@ arr-diff@^2.0.0:
 arr-flatten@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/arr-flatten/-/arr-flatten-1.0.3.tgz#a274ed85ac08849b6bd7847c4580745dc51adfb1"
+
+array-find-index@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/array-find-index/-/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
 
 array-flatten@1.1.1:
   version "1.1.1"
@@ -682,9 +690,9 @@ babel-runtime@^6.18.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
-babel-standalone@^6.24.0:
-  version "6.24.0"
-  resolved "https://registry.npmjs.org/babel-standalone/-/babel-standalone-6.24.0.tgz#9aca8c23b8a7f84ec0765fcb9670cb841af394b2"
+babel-standalone@^6.24.2:
+  version "6.24.2"
+  resolved "https://registry.npmjs.org/babel-standalone/-/babel-standalone-6.24.2.tgz#4936dc9dffde97e184e477b9e52c3d4e7403ac51"
 
 babel-template@^6.24.1:
   version "6.24.1"
@@ -1368,6 +1376,12 @@ csso@~2.3.1:
   dependencies:
     clap "^1.0.9"
     source-map "^0.5.3"
+
+currently-unhandled@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.npmjs.org/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
+  dependencies:
+    array-find-index "^1.0.1"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -2532,6 +2546,13 @@ loose-envify@^1.0.0:
   dependencies:
     js-tokens "^3.0.0"
 
+loud-rejection@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.npmjs.org/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
+  dependencies:
+    currently-unhandled "^0.4.1"
+    signal-exit "^3.0.0"
+
 lower-case@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
@@ -3048,10 +3069,11 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-poi@^8.0.0-rc.6:
-  version "8.0.0-rc.6"
-  resolved "https://registry.npmjs.org/poi/-/poi-8.0.0-rc.6.tgz#89f68ff23baa085f788eb28e437b3d2149bd00d5"
+poi@^8.0.0-rc.12:
+  version "8.0.0-rc.12"
+  resolved "https://registry.npmjs.org/poi/-/poi-8.0.0-rc.12.tgz#0dcdf321c70f6dd5d8088ad2727509bea6d552df"
   dependencies:
+    address "^1.0.1"
     autoprefixer "^7.0.1"
     babel-core "^6.24.1"
     babel-load-config "^0.1.0"
@@ -3073,6 +3095,7 @@ poi@^8.0.0-rc.6:
     import-local-file "^0.2.0"
     installed-by-yarn-globally "^0.1.2"
     lodash.merge "^4.6.0"
+    loud-rejection "^1.6.0"
     mz "^2.6.0"
     node-notifier "^5.1.2"
     opn "^5.0.0"
