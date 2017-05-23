@@ -16,5 +16,9 @@ module.exports = options => ({
           }
         }])
     }
-  }
+  },
+  presets: [
+    require('poi-preset-offline')(),
+    require('poi-preset-bundle-report')()
+  ]
 })
