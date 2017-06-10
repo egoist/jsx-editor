@@ -690,9 +690,9 @@ babel-runtime@^6.18.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
 
-babel-standalone@^6.24.2:
-  version "6.24.2"
-  resolved "https://registry.npmjs.org/babel-standalone/-/babel-standalone-6.24.2.tgz#4936dc9dffde97e184e477b9e52c3d4e7403ac51"
+babel-standalone@^6.25.0:
+  version "6.25.0"
+  resolved "https://registry.npmjs.org/babel-standalone/-/babel-standalone-6.25.0.tgz#759ef04574402b6d1a1b5efa62d18c9a47e4abeb"
 
 babel-template@^6.24.1:
   version "6.24.1"
@@ -1401,17 +1401,11 @@ de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
 
-debug@2.6.7, debug@^2.2.0:
+debug@2.6.7, debug@^2.1.1, debug@^2.2.0:
   version "2.6.7"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.7.tgz#92bad1f6d05bbb6bba22cca88bcd0ec894c2861e"
   dependencies:
     ms "2.0.0"
-
-debug@^2.1.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
-  dependencies:
-    ms "0.7.2"
 
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
@@ -2185,12 +2179,6 @@ ini@^1.3.4, ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
-installed-by-yarn-globally@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/installed-by-yarn-globally/-/installed-by-yarn-globally-0.1.2.tgz#4f6ddefdcb04d51ec3180ad8fbc05a5ca657b2d9"
-  dependencies:
-    user-home "^2.0.0"
-
 interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
@@ -2696,10 +2684,6 @@ minimist@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
-ms@0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.2.tgz#ae25cf2512b3885a1d95d7f037868d8431124765"
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -2997,6 +2981,10 @@ parse-glob@^3.0.4:
     is-extglob "^1.0.0"
     is-glob "^2.0.0"
 
+parse-json-config@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/parse-json-config/-/parse-json-config-0.2.0.tgz#0bc6500a95bef0a3f1f64fbb17fa16f4ea9ffd39"
+
 parse-json@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-2.2.0.tgz#f480f40434ef80741f8469099f8dea18f55a4dc9"
@@ -3100,19 +3088,19 @@ poi-load-config@^1.1.0:
     postcss-load-config "^1.2.0"
     use-config "^1.0.0"
 
-poi-preset-bundle-report@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/poi-preset-bundle-report/-/poi-preset-bundle-report-1.0.1.tgz#0cc558b60c876355886c6802f92a4aaf32929cf4"
+poi-preset-bundle-report@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/poi-preset-bundle-report/-/poi-preset-bundle-report-2.0.0.tgz#946d7f62896d58b517025318590873fd74685206"
   dependencies:
     webpack-bundle-analyzer "^2.8.2"
 
-poi-preset-offline@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.npmjs.org/poi-preset-offline/-/poi-preset-offline-8.0.2.tgz#28de00cce147094fad8ab0980ed759d4f8db0320"
+poi-preset-offline@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.npmjs.org/poi-preset-offline/-/poi-preset-offline-9.0.0.tgz#83dd3514ed714f895aa5178aa5cc4b3b6d6ab05a"
 
-poi@^8.0.6:
-  version "8.0.6"
-  resolved "https://registry.npmjs.org/poi/-/poi-8.0.6.tgz#b129c80aec3589675ef9fd9c3d2283d78ea4c6da"
+poi@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.npmjs.org/poi/-/poi-9.0.0.tgz#c53d14f058e7d4ed73ffac80f9de7a998fcd4f25"
   dependencies:
     address "^1.0.1"
     autoprefixer "^7.1.1"
@@ -3133,13 +3121,13 @@ poi@^8.0.6:
     html-webpack-plugin "^2.28.0"
     http-proxy-middleware "^0.17.4"
     import-local-file "^0.2.0"
-    installed-by-yarn-globally "^0.1.2"
     lodash.merge "^4.6.0"
     loud-rejection "^1.6.0"
     memory-fs "^0.4.1"
     mz "^2.6.0"
     node-notifier "^5.1.2"
     opn "^5.0.0"
+    parse-json-config "^0.2.0"
     poi-load-config "^1.1.0"
     post-compile-webpack-plugin "^0.1.1"
     postcss-loader "^1.3.3"
@@ -3161,6 +3149,7 @@ poi@^8.0.6:
     webpack-merge "^4.1.0"
     webpack-node-externals "^1.6.0"
     yargs "^8.0.1"
+    yarn-global "^1.1.0"
 
 post-compile-webpack-plugin@^0.1.1:
   version "0.1.1"
@@ -4637,3 +4626,9 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+yarn-global@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/yarn-global/-/yarn-global-1.1.0.tgz#ab2a050c51347fc83988b335557709b9f1fdfc08"
+  dependencies:
+    user-home "^2.0.0"
