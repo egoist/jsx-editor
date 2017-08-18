@@ -20,16 +20,16 @@
     }
   },
   "devDependencies": {
-    "poi": "^9.1.1",
+    "poi": "^9.2.4",
     "poi-preset-bundle-report": "^2.0.0",
-    "poi-preset-offline": "^9.0.0",
-    "postcss-nested": "^2.0.2"
+    "poi-preset-offline": "^9.0.2",
+    "postcss-nested": "^2.1.2"
   },
   "dependencies": {
-    "babel-preset-vue": "^1.0.2",
-    "babel-standalone": "^6.25.0",
-    "cm-highlight": "^0.1.0",
-    "codemirror": "^5.27.4",
-    "offline-plugin": "^4.8.1"
+    "babel-preset-vue": "^1.2.0",
+    "babel-standalone": "^6.26.0",
+    "cm-highlight": "^0.1.1",
+    "codemirror": "^5.28.0",
+    "offline-plugin": "^4.8.3"
   }
 }
