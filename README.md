@@ -1,6 +1,6 @@
 # JSX Live Editor
 
-https://jsx.surge.sh
+https://jsx.egoist.moe
 
 ## Development
 

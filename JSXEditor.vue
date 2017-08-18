@@ -3,20 +3,23 @@
     <header class="header">
       <div class="container">
         <div class="header-left">
-          <h1>JSX Live Editor</h1>
-          <h2>Built using <a href="https://github.com/egoist/poi">Poi</a> with almost zero-config, <a target="_blank" href="https://github.com/egoist/vue-jsx">check out source code</a></h2>
+          <h1>
+            <router-link to="/">JSX Live Editor</router-link>
+          </h1>
+          <h2>Built using <a href="https://github.com/egoist/poi">Poi</a> with almost zero-config, <a target="_blank" href="https://github.com/egoist/jsx-editor">check out source code</a></h2>
         </div>
         <div class="header-right">
-          <select v-model="mode">
+          <select aria-label="Select JSX mode" class="form-control" v-model="mode">
             <option value="vue">Vue</option>
             <option value="react">React</option>
           </select>
+          <button class="form-control save-button" @click="saveGist">Save as Gist</button>
         </div>
       </div>
     </header>
     <div class="editors">
       <div class="container">
-        <textarea ref="input" class="input">{{ code }}</textarea>
+        <code-mirror class="input" v-model="code" :options="editorOptions"></code-mirror>
         <div class="result">
           <pre class="code cm-s-default"><code v-html="result"></code></pre>
           <div class="error" v-show="error">{{ error }}</div>
@@ -28,8 +31,9 @@
 
 <script>
   import highlight from 'cm-highlight'
-  import CodeMirror from 'codemirror'
-  import qs from 'querystring'
+  import CodeMirror from 'vue-cm'
+  import axios from 'axios'
+  import progress from 'nprogress'
 
   import 'codemirror/mode/javascript/javascript'
   import 'codemirror/mode/jsx/jsx'
@@ -42,31 +46,36 @@
   <h1>Hello World!</h1>
 </div>
 `.trim()
-      const {input, mode} = qs.parse(location.hash.substring(2))
+      const { input, mode } = this.$route.query
 
       return {
         result: 'Loading...',
         error: '',
         mode: mode || 'vue',
-        code: input || defaultValue
-      }
-    },
-    mounted() {
-      this.editor = CodeMirror.fromTextArea(this.$refs.input, {
-        mode: 'jsx',
-        tabSize: 2,
-        indentWithTabs: false,
-        extraKeys: {
-          Tab: cm => {
-            cm.replaceSelection(' '.repeat(cm.getOption('tabSize')))
+        code: input || defaultValue,
+        editorOptions: {
+          mode: 'jsx',
+          tabSize: 2,
+          indentWithTabs: false,
+          extraKeys: {
+            Tab: cm => {
+              cm.replaceSelection(' '.repeat(cm.getOption('tabSize')))
+            }
           }
         }
-      })
-      this.transform()
-      this.editor.on('change', e => {
-        this.code = e.getValue()
-      })
+      }
     },
+
+    created() {
+      if (this.$route.name === 'gist') {
+        this.fetchGist(this.$route.params.id)
+      }
+    },
+
+    mounted() {
+      this.transform()
+    },
+
     watch: {
       code() {
         this.transform()
@@ -75,6 +84,7 @@
         this.transform()
       }
     },
+
     methods: {
       async transform() {
         const code = this.code
@@ -99,27 +109,51 @@
             mode: 'jsx'
           })
 
-          this.updateURL({ input: code, mode: this.mode })
           this.error = null
         } catch (err) {
           this.error = err.message
         }
       },
-      updateURL({ input, mode }) {
-        const query = qs.parse(location.hash.substring(2))
-        if (input !== undefined) {
-          query.input = input
+
+      async saveGist() {
+        progress.start()
+        const res = await axios.post(`https://api.github.com/gists`, {
+          description: 'Saved by https://jsx.egoist.moe',
+          files: {
+            [`${this.mode}.jsx`]: {
+              content: this.code
+            }
+          }
+        })
+        this.$router.push(`/gist/${res.data.id}`)
+        progress.done()
+      },
+
+      async fetchGist(id) {
+        progress.start()
+        const { data } = await axios.get(`https://api.github.com/gists/${id}?access_token=43f5dfff7c2431bdbc1fe5ee470588a333bcdf1b`)
+        if (data.files['vue.jsx']) {
+          this.mode = 'vue'
+          this.code = data.files['vue.jsx'].content
+        } else if (data.files['react.jsx']) {
+          this.mode = 'react',
+          this.code = data.files['react.jsx'].content
         }
-        if (mode !== undefined) {
-          query.mode = mode
-        }
-        location.hash = `#?${qs.stringify(query)}`
+        progress.done()
       }
+    },
+
+    components: {
+      CodeMirror
     }
   }
 </script>
 
+<style src="normalize.css/normalize.css"></style>
 <style src="codemirror/lib/codemirror.css"></style>
+<style src="nprogress/nprogress.css"></style>
+
+<style src="./wtf-forms.css"></style>
 <style>
   html, body, #app, .CodeMirror {
     height: 100%;
@@ -148,6 +182,10 @@
     h1 {
       margin: 0;
       font-weight: 400;
+      a {
+        text-decoration: none;
+        color: white;
+      }
     }
     h2 {
       margin: 0;
@@ -205,4 +243,16 @@
     font-size: 16px;
     white-space: pre;
   }
+
+
+.form-control {
+  height: 26px;
+}
+
+.save-button {
+  background: #eee;
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
+}
 </style>
