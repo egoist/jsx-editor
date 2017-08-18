@@ -224,6 +224,7 @@
     height: 100%;
     border-right: 1px solid #e2e2e2;
     background-color: white;
+    overflow: auto;
   }
   .code {
     margin: 0;
