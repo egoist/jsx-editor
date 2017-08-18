@@ -7,7 +7,11 @@ module.exports = options => ({
     config.module.noParse.add(/babel-standalone/)
   },
   presets: [
-    require('poi-preset-offline')(),
+    require('poi-preset-offline')({
+      pluginOptions: {
+        excludes: ['_redirects']
+      }
+    }),
     require('poi-preset-bundle-report')()
   ]
 })
