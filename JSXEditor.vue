@@ -153,7 +153,6 @@
 <style src="codemirror/lib/codemirror.css"></style>
 <style src="nprogress/nprogress.css"></style>
 
-<style src="./wtf-forms.css"></style>
 <style>
   html, body, #app, .CodeMirror {
     height: 100%;
