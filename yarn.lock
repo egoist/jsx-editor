@@ -414,9 +414,9 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-jsx-event-modifiers@^1.0.2:
-  version "1.0.2"
-  resolved "http://registry.npm.taobao.org/babel-plugin-jsx-event-modifiers/download/babel-plugin-jsx-event-modifiers-1.0.2.tgz#287f774bd0dfda9abc125a0f01aeb51eaff49806"
+babel-plugin-jsx-event-modifiers@^2.0.2:
+  version "2.0.2"
+  resolved "http://registry.npm.taobao.org/babel-plugin-jsx-event-modifiers/download/babel-plugin-jsx-event-modifiers-2.0.2.tgz#c2832ada05be8ab958c5871b569ea0c0bb49bbfa"
 
 babel-plugin-jsx-v-model@^2.0.1:
   version "2.0.1"
@@ -730,12 +730,12 @@ babel-preset-vue@^0.1.0:
     babel-plugin-syntax-jsx "^6.18.0"
     babel-plugin-transform-vue-jsx "^3.1.2"
 
-babel-preset-vue@^1.2.0:
-  version "1.2.0"
-  resolved "http://registry.npm.taobao.org/babel-preset-vue/download/babel-preset-vue-1.2.0.tgz#9c5962866a60a9302483fb14751b810f5fde87ff"
+babel-preset-vue@^1.2.1:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/babel-preset-vue/download/babel-preset-vue-1.2.1.tgz#b0de8977e0ce981fc6824cf0a537917a02a6fe87"
   dependencies:
     babel-helper-vue-jsx-merge-props "^2.0.2"
-    babel-plugin-jsx-event-modifiers "^1.0.2"
+    babel-plugin-jsx-event-modifiers "^2.0.2"
     babel-plugin-jsx-v-model "^2.0.1"
     babel-plugin-jsx-vue-functional "^2.1.0"
     babel-plugin-syntax-jsx "^6.18.0"
@@ -2954,10 +2954,6 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
 
-lodash.merge@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
-
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
@@ -3601,28 +3597,32 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-poi-load-config@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/poi-load-config/-/poi-load-config-1.1.0.tgz#6f7c42803dde4a54a653bec1ee4b0c7f92331f56"
+poi-dev-utils@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/poi-dev-utils/download/poi-dev-utils-1.0.1.tgz#c3089d1db60e9d2c56343decc6a3b9647d577c14"
+
+poi-load-config@^1.1.1:
+  version "1.1.1"
+  resolved "http://registry.npm.taobao.org/poi-load-config/download/poi-load-config-1.1.1.tgz#53dcbbac6b7db58604ef1f98263fab919ce32ad9"
   dependencies:
     babel-core "^6.24.1"
     babel-load-config "^1.0.0"
     postcss-load-config "^1.2.0"
     use-config "^1.0.0"
 
-poi-preset-bundle-report@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/poi-preset-bundle-report/-/poi-preset-bundle-report-2.0.0.tgz#946d7f62896d58b517025318590873fd74685206"
+poi-preset-bundle-report@^2.0.1:
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/poi-preset-bundle-report/download/poi-preset-bundle-report-2.0.1.tgz#46bb3d72bd59d4f533406e98c6c1ccc4b6000a86"
   dependencies:
     webpack-bundle-analyzer "^2.8.2"
 
-poi-preset-offline@^9.0.2:
-  version "9.0.2"
-  resolved "http://registry.npm.taobao.org/poi-preset-offline/download/poi-preset-offline-9.0.2.tgz#d43929d779b95a16def62665c1f378801d707a6d"
+poi-preset-offline@^9.0.3:
+  version "9.0.3"
+  resolved "http://registry.npm.taobao.org/poi-preset-offline/download/poi-preset-offline-9.0.3.tgz#e6858f64cb97a3ce9674a377e3fe6d20be4d7b0f"
 
-poi@^9.2.4:
-  version "9.2.4"
-  resolved "http://registry.npm.taobao.org/poi/download/poi-9.2.4.tgz#074ab2fbc1934f132578954d1767191f93183dee"
+poi@^9.3.0-rc.3:
+  version "9.3.0-rc.3"
+  resolved "http://registry.npm.taobao.org/poi/download/poi-9.3.0-rc.3.tgz#e84e133d0aab57f166db65cc3c5065ee1f25b5ae"
   dependencies:
     address "^1.0.1"
     autoprefixer "^7.1.2"
@@ -3641,14 +3641,15 @@ poi@^9.2.4:
     highlight-es "^1.0.1"
     html-webpack-plugin "^2.28.0"
     import-local-file "^0.2.0"
-    lodash.merge "^4.6.0"
+    lodash "^4.17.4"
     loud-rejection "^1.6.0"
     memory-fs "^0.4.1"
     mz "^2.6.0"
     node-notifier "^5.1.2"
     opn "^5.0.0"
     parse-json-config "^0.2.0"
-    poi-load-config "^1.1.0"
+    poi-dev-utils "^1.0.1"
+    poi-load-config "^1.1.1"
     post-compile-webpack-plugin "^0.1.1"
     postcss-loader "^2.0.6"
     rimraf "^2.6.1"

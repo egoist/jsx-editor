@@ -20,14 +20,14 @@
     }
   },
   "devDependencies": {
-    "poi": "^9.2.4",
-    "poi-preset-bundle-report": "^2.0.0",
-    "poi-preset-offline": "^9.0.2",
+    "poi": "^9.3.0-rc.3",
+    "poi-preset-bundle-report": "^2.0.1",
+    "poi-preset-offline": "^9.0.3",
     "postcss-nested": "^2.1.2"
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "babel-preset-vue": "^1.2.0",
+    "babel-preset-vue": "^1.2.1",
     "babel-standalone": "^6.26.0",
     "cm-highlight": "^0.1.1",
     "codemirror": "^5.28.0",
