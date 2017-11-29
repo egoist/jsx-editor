@@ -90,7 +90,7 @@
         const code = this.code
         try {
           const [babel, transformVueJSX] = await Promise.all([
-            import('babel-standalone'),
+            import('@babel/standalone'),
             import('babel-preset-vue/dist/babel-preset-vue')
           ])
 
@@ -101,7 +101,7 @@
           if (this.mode === 'vue') {
             transformOptions.presets.push(transformVueJSX)
           } else if (this.mode === 'react') {
-            transformOptions.plugins.push('transform-react-jsx')
+            transformOptions.presets.push('react')
           }
           const result = babel.transform(code, transformOptions)
 

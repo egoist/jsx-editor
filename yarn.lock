@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@babel/standalone@^7.0.0-beta.32":
+  version "7.0.0-beta.32"
+  resolved "http://registry.npm.taobao.org/@babel/standalone/download/@babel/standalone-7.0.0-beta.32.tgz#4c1d797cbba94ec16889385add0c87062770aaf8"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -759,10 +763,6 @@ babel-runtime@^6.18.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0:
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.10.0"
-
-babel-standalone@^6.26.0:
-  version "6.26.0"
-  resolved "http://registry.npm.taobao.org/babel-standalone/download/babel-standalone-6.26.0.tgz#15fb3d35f2c456695815ebf1ed96fe7f015b6886"
 
 babel-template@^6.24.1, babel-template@^6.25.0:
   version "6.25.0"

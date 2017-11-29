@@ -26,9 +26,9 @@
     "postcss-nested": "^2.1.2"
   },
   "dependencies": {
+    "@babel/standalone": "^7.0.0-beta.32",
     "axios": "^0.16.2",
     "babel-preset-vue": "^1.2.1",
-    "babel-standalone": "^6.26.0",
     "cm-highlight": "^0.1.1",
     "codemirror": "^5.28.0",
     "normalize.css": "^7.0.0",
