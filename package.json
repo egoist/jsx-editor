@@ -20,7 +20,7 @@
     }
   },
   "devDependencies": {
-    "poi": "^9.3.0-rc.3",
+    "poi": "^9.6.4",
     "poi-preset-bundle-report": "^2.0.1",
     "poi-preset-offline": "^9.0.3",
     "postcss-nested": "^2.1.2"
@@ -28,7 +28,7 @@
   "dependencies": {
     "@babel/standalone": "^7.0.0-beta.32",
     "axios": "^0.16.2",
-    "babel-preset-vue": "^1.2.1",
+    "babel-preset-vue": "^2.0.0",
     "cm-highlight": "^0.1.1",
     "codemirror": "^5.28.0",
     "normalize.css": "^7.0.0",

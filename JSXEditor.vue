@@ -6,7 +6,7 @@
           <h1>
             <router-link to="/">JSX Live Editor</router-link>
           </h1>
-          <h2>Built using <a href="https://github.com/egoist/poi">Poi</a> with almost zero-config, <a target="_blank" href="https://github.com/egoist/jsx-editor">check out source code</a></h2>
+          <h2>{{ version }}, <a target="_blank" href="https://github.com/egoist/jsx-editor">check out source code</a></h2>
         </div>
         <div class="header-right">
           <select aria-label="Select JSX mode" class="form-control" v-model="mode">
@@ -53,6 +53,7 @@
         error: '',
         mode: mode || 'vue',
         code: input || defaultValue,
+        version: `@babel/standalone@${process.env.BABEL_VERSION} & babel-preset-vue@${process.env.VUE_PRESET_VERSION}`,
         editorOptions: {
           mode: 'jsx',
           tabSize: 2,
