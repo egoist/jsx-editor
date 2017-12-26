@@ -42,7 +42,7 @@
     name: 'JSXEditor',
     data() {
       const defaultValue = `
-<div class="lolicon">
+<div id="lolicon">
   <h1>Hello World!</h1>
 </div>
 `.trim()
@@ -51,7 +51,7 @@
       return {
         result: 'Loading...',
         error: '',
-        mode: mode || 'vue',
+        mode: mode || 'react',
         code: input || defaultValue,
         version: `@babel/standalone@${process.env.BABEL_VERSION} & babel-preset-vue@${process.env.VUE_PRESET_VERSION}`,
         editorOptions: {
