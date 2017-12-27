@@ -20,7 +20,7 @@
     }
   },
   "devDependencies": {
-    "poi": "^9.6.7",
+    "poi": "^9.6.8",
     "poi-preset-bundle-report": "^2.0.1",
     "poi-preset-offline": "^9.0.3",
     "postcss-nested": "^2.1.2"
