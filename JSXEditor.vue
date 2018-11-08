@@ -42,7 +42,7 @@
     name: 'JSXEditor',
     data() {
       const defaultValue = `
-<div id="lolicon">
+<div id="welcome">
   <h1>Hello World!</h1>
 </div>
 `.trim()
@@ -53,7 +53,7 @@
         error: '',
         mode: mode || 'react',
         code: input || defaultValue,
-        version: `@babel/standalone@${process.env.BABEL_VERSION} & babel-preset-vue@${process.env.VUE_PRESET_VERSION}`,
+        version: `@babel/standalone@${process.env.BABEL_VERSION} & transform-vue-jsx@${process.env.VUE_JSX_VERSION}`,
         editorOptions: {
           mode: 'jsx',
           tabSize: 2,
@@ -83,6 +83,12 @@
       },
       mode() {
         this.transform()
+        this.$router.push({
+          query: {
+            ...this.$route.query,
+            mode: this.mode
+          }
+        })
       }
     },
 
@@ -92,7 +98,7 @@
         try {
           const [babel, transformVueJSX] = await Promise.all([
             import('@babel/standalone'),
-            import('babel-preset-vue/dist/babel-preset-vue')
+            import('babel-plugin-transform-vue-jsx')
           ])
 
           const transformOptions = {
@@ -100,7 +106,7 @@
             plugins: []
           }
           if (this.mode === 'vue') {
-            transformOptions.presets.push(transformVueJSX)
+            transformOptions.plugins.push(transformVueJSX)
           } else if (this.mode === 'react') {
             transformOptions.presets.push('react')
           }
@@ -132,7 +138,7 @@
 
       async fetchGist(id) {
         progress.start()
-        const { data } = await axios.get(`https://api.github.com/gists/${id}?access_token=43f5dfff7c2431bdbc1fe5ee470588a333bcdf1b`)
+        const { data } = await axios.get(`https://api.github.com/gists/${id}?access_token=${process.env.APP_GH_TOKEN}`)
         if (data.files['vue.jsx']) {
           this.mode = 'vue'
           this.code = data.files['vue.jsx'].content

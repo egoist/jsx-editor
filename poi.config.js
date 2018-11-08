@@ -1,23 +1,18 @@
-const OfflinePlugin = require('offline-plugin')
-const vuePresetVersion = require('babel-preset-vue/package').version
+const vueJsxVersion = require('babel-plugin-transform-vue-jsx/package').version
 const babelVersion = require('@babel/standalone/package').version
 
-module.exports = options => ({
+const isProd = process.env.POI_COMMAND === 'build'
+
+module.exports = {
   // Disable sourceMap in production mode
-  sourceMap: options.mode === 'development',
-  extendWebpack(config) {
+  sourceMap: !isProd,
+  chainWebpack(config) {
     config.module.set('noParse', /babel-standalone/)
   },
-  presets: [
-    require('poi-preset-offline')({
-      pluginOptions: {
-        excludes: ['_redirects']
-      }
-    }),
-    require('poi-preset-bundle-report')()
-  ],
-  env: {
-    VUE_PRESET_VERSION: vuePresetVersion,
-    BABEL_VERSION: babelVersion
+  envs: {
+    VUE_JSX_VERSION: vueJsxVersion,
+    BABEL_VERSION: babelVersion,
+    // Read from netlify
+    APP_GH_TOKEN: process.env.APP_GH_TOKEN
   }
-})
+}
