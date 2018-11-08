@@ -1,6 +1,6 @@
 # JSX Live Editor
 
-https://jsx.egoist.moe
+https://jsx.egoist.sh
 
 ## Development
 
