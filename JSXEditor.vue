@@ -124,8 +124,8 @@
 
       async saveGist() {
         progress.start()
-        const res = await axios.post(`https://api.github.com/gists`, {
-          description: 'Saved by https://jsx.egoist.moe',
+        const res = await axios.post(`https://api.github.com/gists?access_token=${process.env.APP_GH_TOKEN}`, {
+          description: 'Saved by https://jsx.egoist.sh',
           files: {
             [`${this.mode}.jsx`]: {
               content: this.code

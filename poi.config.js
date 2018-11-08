@@ -12,7 +12,7 @@ module.exports = {
   envs: {
     VUE_JSX_VERSION: vueJsxVersion,
     BABEL_VERSION: babelVersion,
-    // Read from netlify
-    APP_GH_TOKEN: process.env.APP_GH_TOKEN
+    // It's fine to be exposed :)
+    APP_GH_TOKEN: '0b481a3c7fe634bdbb3bb16d1d157717959f67be'
   }
 }
