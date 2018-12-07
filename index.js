@@ -4,7 +4,7 @@ import router from './router'
 new Vue({
   el: '#app',
   router,
-  render() {
-    return <router-view />
+  render(h) {
+    return h('router-view')
   }
 })

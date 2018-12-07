@@ -1,11 +1,7 @@
 const vueJsxVersion = require('babel-plugin-transform-vue-jsx/package').version
 const babelVersion = require('@babel/standalone/package').version
 
-const isProd = process.env.POI_COMMAND === 'build'
-
 module.exports = {
-  // Disable sourceMap in production mode
-  sourceMap: !isProd,
   chainWebpack(config) {
     config.module.set('noParse', /babel-standalone/)
   },

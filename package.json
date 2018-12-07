@@ -5,8 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "poi dev",
-    "build": "poi build",
+    "dev": "poi --serve",
+    "build": "poi --prod",
     "deploy": "npm run build && surge -d jsx.surge.sh -p dist"
   },
   "author": {
@@ -19,8 +19,11 @@
     }
   },
   "devDependencies": {
-    "babel-plugin-transform-vue-jsx": "^3.7.0",
-    "poi": "next",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^4.0.0",
+    "babel-preset-env": "^1.7.0",
+    "poi": "^12.0.0-beta.8",
     "postcss-nested": "^2.1.2",
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17"
